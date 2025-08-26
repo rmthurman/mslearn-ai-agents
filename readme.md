@@ -8,7 +8,21 @@ View the exercises in the [GitHub Pages site for this repo](https://go.microsoft
 
 > **Note**: While you can complete these exercises on their own, they're designed to complement modules on [Microsoft Learn](https://learn.microsoft.com/training/paths/develop-ai-agents-on-azure/); in which you'll find a deeper dive into some of the underlying concepts on which these exercises are based.
 
+## Running in a Dev Container
+
+To run the exercises in a Dev Container, follow these steps:
+
+1. Open the repository in Visual Studio Code.
+2. Press `F1` and select `Remote-Containers: Reopen in Container`.
+3. Wait for the container to build and start.
+4. Open a terminal in the container.
+5. Start the virtual environment by running the following command:
+   ```
+   source .venv/bin/activate
+   ```
+   
 ## Reporting issues
 
 If you encounter any problems in the exercises, please report them as **issues** in this repo.
+
 

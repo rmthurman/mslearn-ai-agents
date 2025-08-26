@@ -1,0 +1,70 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the
+// README at: https://github.com/devcontainers/templates/tree/main/src/typescript-node
+{
+  "name": "Azure AI Lab with Python 3.13 and Az Cli",
+  // Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
+  "image": "mcr.microsoft.com/devcontainers/python:3.13",
+  // Features to add to the dev container. More info: https://containers.dev/features.
+
+  // "build": {
+  //   // Path is relative to the devcontainer.json file.
+  //   "dockerfile": "Dockerfile"
+  // },
+  "features": {
+    "ghcr.io/devcontainers/features/github-cli:1": {},
+    "ghcr.io/devcontainers/features/node:1": {},
+    "ghcr.io/devcontainers/features/azure-cli:1": {},
+    "ghcr.io/devcontainers/features/python:1": {}
+    //"ghcr.io/jlaundry/devcontainer-features/azure-functions-core-tools:1": {}
+  },
+
+  // Use 'forwardPorts' to make a list of ports inside the container available locally.
+  "forwardPorts": [3000],
+
+  // Use 'postCreateCommand' to run commands after the container is created.
+  "postCreateCommand": "sudo ln -sf /usr/local/bin/python3.13 /usr/local/python/current/bin/python && sudo ln -sf /usr/local/bin/python3.13 /usr/local/python/current/bin/python3 && npm i -g azure-functions-core-tools@4 @microsoft/teamsapp-cli --unsafe-perm true && bash /workspaces/ai-agents/.devcontainer/setup-venvs.sh",
+
+  // Configure tool-specific properties.
+  // "customizations": {},
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "editor.defaultFormatter": "dbaeumer.vscode-eslint",
+        "editor.formatOnSave": true,
+        "extensions.verifySignature": false,
+        "remote.localPortHost": "allInterfaces",
+        "editor.insertSpaces": true,
+        "prettier.singleQuote": true,
+        "prettier.trailingComma": "all",
+        "python.defaultInterpreterPath": "/workspaces/ai-agents/.venv/bin/python",
+        "eslint.options": {
+          "extensions": [".js", ".jsx", ".md", ".mdx", ".ts", ".tsx"]
+        },
+        "javascript.suggestionActions.enabled": false,
+        "typescript.preferences.quoteStyle": "single",
+        "editor.codeActionsOnSave": {
+          "source.fixAll.eslint": true
+        },
+        "eslint.validate": ["javascript"]
+      },
+      "extensions": [
+        "bmewburn.vscode-intelephense-client",
+        "davidanson.vscode-markdownlint",
+        "dbaeumer.vscode-eslint",
+        "esbenp.prettier-vscode",
+        "felixfbecker.php-debug",
+        "ikappas.phpcs",
+        "ms-azuretools.vscode-docker",
+        "timonwong.shellcheck",
+        "tyriar.sort-lines",
+        "TeamsDevApp.ms-teams-vscode-extension",
+        "ms-azuretools.vscode-azurefunctions",
+        "ms-azuretools.vscode-azureresourcegroups",
+        "HashiCorp.terraform"
+      ]
+    }
+  }
+  // "runArgs": ["--platform=linux/amd64" ],
+  // Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
+  // "remoteUser": "root"
+}
