@@ -20,6 +20,33 @@ To run the exercises in a Dev Container, follow these steps:
    ```
    source .venv/bin/activate
    ```
+
+### Dev Container Configuration Updates
+
+The following updates have been made to fix dev container build issues:
+
+#### **Changed Python Version (September 2025)**
+- **Changed from**: Python 3.13 (Debian trixie)
+- **Changed to**: Python 3.12 (Debian bookworm)
+- **Reason**: Python 3.13 uses unstable Debian "trixie" which lacks Azure CLI repository support
+
+#### **Fixed Workspace Path References**
+- **Updated**: All `/workspaces/ai-agents/` references to `/workspaces/mslearn-ai-agents/`
+- **Files affected**: 
+  - `.devcontainer/devcontainer.json` (postCreateCommand, Python interpreter path)
+  - `.devcontainer/setup-venvs.sh` (virtual environment and Labfiles paths)
+
+#### **Fixed JSON Configuration Issues**
+- **Fixed**: `editor.defaultFormatter` setting (changed from invalid ESLint reference to `null`)
+- **Fixed**: `source.fixAll.eslint` setting (changed from boolean `true` to string `"explicit"`)
+
+#### **Fixed Directory Creation Issues**
+- **Added**: `sudo mkdir -p /usr/local/python/current/bin` to postCreateCommand
+- **Reason**: Prevents symlink creation failures when target directories don't exist
+
+#### **Removed Redundant Features**
+- **Removed**: `ghcr.io/devcontainers/features/python:1` from features list
+- **Reason**: Python 3.12 base image already includes Python, avoiding conflicts
    
 ## Reporting issues
 
